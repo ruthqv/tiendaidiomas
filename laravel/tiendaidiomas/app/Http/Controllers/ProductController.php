@@ -11,7 +11,10 @@ class ProductController extends Controller
     public function __construct(Request $request)
     {
             $this->middleware(function ($request, $next) {
-               $this->value = session()->get( 'lang' );
+            
+            $this->middleware('LangMiddleware');
+
+            $this->value = session()->get( 'lang' );
 
                 return $next($request);
         });
@@ -20,8 +23,8 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
-        // echo 'variable de sesión de lang es:' . $value;
-        // $value = $request->session()->get('lang');
+        // echo 'variable de sesión de lang es:' . $this->value;
+
         $products = DB::table('langs')->where('langs.lang', ''.$this->value.'')
             ->leftJoin('product_langs', 'product_langs.id_lang', '=', 'langs.id_lang')
             ->leftJoin('products', 'product_langs.id_product', '=', 'products.id_product')

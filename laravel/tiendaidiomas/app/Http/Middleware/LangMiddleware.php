@@ -17,6 +17,9 @@ class LangMiddleware
     {
         if (!empty(session('lang'))) {
             \App::setLocale(session('lang'));
+        }else{
+            $lang= 'es';
+            session(['lang' => $lang]);
         }
         return $next($request);
     }

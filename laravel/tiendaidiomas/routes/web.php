@@ -24,6 +24,8 @@ Route::get('lang/{lang}', function ($lang) {
 
 Auth::routes();
 
+Route::resource('admin/dashboard', 'AdminController');
+
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 Route::get('cart/show', 'CartController@show')->name('cart-show');
