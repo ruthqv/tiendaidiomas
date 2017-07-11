@@ -10,7 +10,22 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', 'ProductController@index')->name('home');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('products/{id}', 'ProductController@find')->name('product');
+
+
+Route::get('lang/{lang}', function ($lang) {
+        session(['lang' => $lang]);
+        return \Redirect::back();
+    })->where([
+        'lang' => 'en|es'
+    ]);
+
+Auth::routes();
+
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+Route::get('cart/show', 'CartController@show')->name('cart-show');
+
+Route::get('cart/add/{id}', 'CartController@add')->name('cart-add');

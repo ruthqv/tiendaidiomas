@@ -13,9 +13,8 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-    'register' => 'Register',
-    'login' =>'Login',
-
+    'home' => 'You are in home',
+    'shop' => 'Shop',
+    'addtocart' => 'Shop now',    
+    'see' => 'See more',   
 ];
